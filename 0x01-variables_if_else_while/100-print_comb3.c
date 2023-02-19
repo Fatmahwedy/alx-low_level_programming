@@ -1,9 +1,6 @@
-/*
- * File: 101-print_comb4.c
- * Auth: fatma hwedy
- */
-
 #include <stdio.h>
+#include <stdio.h>
+#include <time.h>
 
 /**
  * main - Prints all possible combinations of three different digits,
@@ -12,29 +9,26 @@
  * Return: Always 0.
  */
 int main(void)
+
 {
-	int digit1, digit2, digit3;
+	int d,p;
 
-	for (digit1 = 0; digit1 < 8; digit1++)
+	for (d= '0';d < '9'; d++)
 	{
-		for (digit2 = digit1 + 1; digit2 < 9; digit2++)
-		{
-			for (digit3 = digit2 + 1; digit3 < 10; digit3++)
-			{
-				putchar((digit1 % 10) + '0');
-				putchar((digit2 % 10) + '0');
-				putchar((digit3 % 10) + '0');
 
-				if (digit1 == 7 && digit2 == 8 && digit3 == 9)
-					continue;
-				
-				putchar(',');
-				putchar(' ');
-			}
-		}
+	for (p =d + 1; p<= '9'; p++)
+	{
+	if (p != d)
+	{
+	putchar(d);
+	putchar(p);
+	if (d == '8' && p == '9')
+	continue;
+	putchar(',');
+	putchar(' ');
 	}
-
+	}
+	}
 	putchar('\n');
-
 	return (0);
 }
