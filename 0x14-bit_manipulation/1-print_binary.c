@@ -1,16 +1,26 @@
 #include "main.h"
+#include "main.h"
 
-
-/**
-* print_binary_helper - recursive helper function to print binary number
-* @n: decimal number to convert and print as binary
-*/
-
-void print_binary_helper(unsigned long int n)
+void print_binary(unsigned long int n)
 {
-    if (n == 0)
-        return;
+    unsigned long int mask;
 
-    print_binary_helper(n >> 1);
-    _putchar((n & 1) + '0');
+    mask = 1UL << ((sizeof(unsigned long int) << 3) - 1); /* set mask to 1000...0000 */
+
+    while (mask > 0)
+    {
+        if (n & mask) /* if the bit in n is set */
+        {
+            _putchar('1');
+        }
+        else
+        {
+            _putchar('0');
+        }
+
+        mask >>= 1; /* shift the mask right by 1 */
+    }
+
+    _putchar('\n');
 }
+
