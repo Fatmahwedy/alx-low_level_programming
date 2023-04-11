@@ -1,30 +1,16 @@
 #include "main.h"
 
+
 /**
- * print_binary - prints the binary representation
- * of a number.
- * @n: unsigned long int.
- *
- * Return: no return.
- */
-void print_binary(unsigned long int n)
+* print_binary_helper - recursive helper function to print binary number
+* @n: decimal number to convert and print as binary
+*/
+
+void print_binary_helper(unsigned long int n)
 {
-    unsigned long int mask = 1UL << (sizeof(unsigned long int) * 8 - 1);
-    while (mask > 0) {
-        if (n & mask) {
-            printf("1");
-        } else {
-            printf("0");
-        }
-        mask >>= 1;
-    }
-}
+    if (n == 0)
+        return;
 
-int main() {
-    unsigned long int n = 42;
-    printf("Binary representation of %lu: ", n);
-    print_binary(n);
-    printf("\n");
-    return 0;
+    print_binary_helper(n >> 1);
+    _putchar((n & 1) + '0');
 }
-
