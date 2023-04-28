@@ -8,22 +8,15 @@
  *
  * Return: 1 if it worked, -1 if it didn't.
  */
-
 int set_bit(unsigned long int *n, unsigned int index)
 {
-    unsigned long int mask;
+	unsigned int m;
 
-    /* Check if index is out of bounds */
-    if (index >= sizeof(unsigned long int) * 8) {
-        return -1;
-    }
+	if (index > 63)
+		return (-1);
 
-    /* Set mask to 1 at index-th bit */
-    mask = 1UL << index;
+	m = 1 << index;
+	*n = (*n | m);
 
-    /* Set the bit at index to 1 using bitwise OR */
-    *n |= mask;
-
-    return 1;
+	return (1);
 }
-
