@@ -1,21 +1,22 @@
 #include "main.h"
 
 /**
-* get_endianness - checks the endianness
-*
-* Return: 0 if big endian, 1 if little endian
-*/
-/* Function that checks the endianness */
-int get_endianness(void)
+ * flip_bits - returns the number of bits you would
+ * need to flip to get from one number to another
+ * @n: number one.
+ * @m: number two.
+ *
+ * Return: number of bits.
+ */
+unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-    unsigned int i = 1;
-    char *c = (char*)&i;
-    
-/* If the first byte of the integer is non-zero, we're little endian */
-    if (*c)
-        return 1;
-    
-/* Otherwise, we're big endian */
-    return 0;
-}
+	unsigned int nbits;
 
+	for (nbits = 0; n || m; n >>= 1, m >>= 1)
+	{
+		if ((n & 1) != (m & 1))
+			nbits++;
+	}
+
+	return (nbits);
+}
