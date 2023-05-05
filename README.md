@@ -1,2 +1,1 @@
-#!/bin/bash
-readme
+0x14. C - Bit manipulation
